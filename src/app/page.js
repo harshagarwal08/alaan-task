@@ -30,7 +30,7 @@ export default function Home() {
   }
 
   const handleSaveChanges = () => {
-    if(inputTagValue.trim() === "") return alert('Please enter a tag name');
+    if(inputTagValue.trim() === "") return alert('Please enter a tag group name');
 
     const newTag = {
       id: tags.length + 1,
@@ -67,7 +67,7 @@ export default function Home() {
         <Button buttonName="+ Add New" onClick={()=>handleModal(true)}/>
       </div>
       <div className='flex flex-col gap-5'>
-      {tags.map((tag) => (
+      {tags.length === 0 ? <div className='text-2xl text-[#0B103A] ml-20'>You do not have any tags to display!</div>:tags.map((tag) => (
         <Tag tag={tag} key={tag.id} handleEditTag={handleEditTag}/>
       ))}
       </div>
